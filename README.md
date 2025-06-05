@@ -22,7 +22,7 @@ It includes features like authentication, product listing, product details, cart
 ### 📦 Step 1: Clone the Project
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/shopie.git
+git clone https://github.com/AhmedFarag18/shopie.git
 cd shopie
 ```
 
