@@ -1,3 +1,4 @@
+import Error404 from "../pages/Error404";
 
 export const routes = [
   { path: '/', element: <h2>Home</h2> },
@@ -7,5 +8,5 @@ export const routes = [
   { path: '/cart', element: <h2>Cart</h2> },
 
   // make Not Found Last
-  { path: '/*', element: <h2>Not Found</h2> },
+  { path: '/*', element: <Error404 /> },
 ];
