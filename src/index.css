@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+
+@theme {
+  /* ----------- Colors Variables -----------*/
+  --color-primary: #6c7fd8;
+  --color-secondary: rgb(99, 102, 241);
+  --color-accent: rgb(236, 72, 153);
+  --color-dark: rgb(15, 23, 42);
+  --color-white: #ffffff;
+  --color-light: #f8f8fb;
+  --color-success: rgb(16, 185, 129);
+  --color-warning: rgb(245, 158, 11);
+  --color-danger: rgb(239, 68, 68);
+
+  --color-text-primary: rgb(15, 23, 42);
+  --color-text-secondary: rgb(100, 116, 139);
+
+  /*----------- Font Family Variables -----------*/
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}
