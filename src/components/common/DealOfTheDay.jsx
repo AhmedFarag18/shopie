@@ -84,36 +84,37 @@ export default function DealOfTheDay() {
           ))}
         </Swiper>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          <div className="bg-gradient-to-r from-orange-100 to-orange-200 rounded-lg p-8 flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-4 md:mb-0">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Tasty Snack & Fast food</h3>
-              <p className="text-gray-600 mb-4">The flavour of something special</p>
-              <button className="px-4 py-2 bg-gradient-to-r from-red-400 from-10% to-orange-300 to-90% text-white rounded-md hover:bg-purple-700 
-              transition-colors transition-transform duration-300 transform hover:scale-110">
-                Shop Now
-              </button>
-            </div>
-            <div className="md:w-1/2 flex justify-center">
-              <img src="src/assets/Blueberry - eCommerce/one.png"alt="Snacks" className="h-60 object-contain"/>
-            </div>
-          </div>
+    <div className="flex flex-col md:flex-row justify-center items-center gap-20 p-15 bg-white">
+      <div className="bg-[#fef0d7] relative w-full md:w-[450px] h-[300px] rounded-2xl overflow-hidden flex items-center justify-between p-6">
+        <div className="absolute top-0 right-0 w-full h-full bg-[#fcd9a3] rotate-[-30deg] origin-top-right -translate-y-[60%] -translate-x-[10%]"></div>
 
-          <div className="bg-gradient-to-r from-pink-200 to-blue-100 rounded-lg p-8 flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-4 md:mb-0">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Fresh Fruits & Vegetables</h3>
-              <p className="text-gray-600 mb-4">A healthy meal for every one</p>
-              <button className="px-4 py-2 bg-gradient-to-r from-pink-500 from-10% to-purple-400 to-90% text-white rounded-md hover:bg-green-700
-               transition-colors transition-transform duration-300 transform hover:scale-110">
-                Shop Now
-              </button>
-            </div>
-            <div className="md:w-1/2 flex justify-center">
-              <img src="src/assets/Blueberry - eCommerce/two.png" alt="Fruits" className="h-60 object-contain"></img>
-            </div>
-          </div>
+        <div className="relative z-10 w-1/2 flex justify-center">
+          <img src="src/assets/Blueberry - eCommerce/one.png" alt="Snacks" className="w-70 h-auto" />
+        </div>
+
+        <div className="relative z-10 w-1/2 space-y-3">
+          <h2 className="text-lg font-semibold text-gray-800">Tasty Snack & Fast food</h2>
+          <p className="text-sm text-gray-500">The flavour of something special</p>
+          <button className="text-sm px-4 py-2 border border-gray-400 rounded hover:bg-gray-100">Shop Now</button>
         </div>
       </div>
+
+      <div className="bg-[#ffdbe3] relative w-full md:w-[450px] h-[300px] rounded-2xl overflow-hidden flex items-center justify-between p-6">
+        <div className="absolute top-0 right-0 w-full h-full bg-[#ffbfcf] rotate-[-30deg] origin-top-right -translate-y-[60%] -translate-x-[10%]"></div>
+
+        <div className="relative z-10 w-1/2 flex justify-center">
+          <img src="src/assets/Blueberry - eCommerce/two.png" alt="Fruits" className="w-70 h-auto" /> 
+        </div>
+
+        <div className="relative z-10 w-1/2 space-y-3">
+          <h2 className="text-lg font-semibold text-gray-800">Fresh Fruits & Vegetables</h2>
+          <p className="text-sm text-gray-500">A healthy meal for every one</p>
+          <button className="text-sm px-4 py-2 border border-gray-400 rounded hover:bg-gray-100">Shop Now</button>
+        </div>
+      </div>
+    </div>
+
+        </div>
     </section>
   );
 }

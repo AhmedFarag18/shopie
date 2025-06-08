@@ -3,7 +3,6 @@ import { Toaster } from "react-hot-toast";
 import { routes } from "./routes/routing";
 import MainLayout from "./components/layout/MainLayout";
 
-
 function App() {
   return (
     <>

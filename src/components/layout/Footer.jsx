@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="text-center text-xs text-gray-500 mt-10">
-        © 2024 BlueBerry. All rights reserved.
+        © 2025 BlueBerry. All rights reserved.
       </p>
     </footer>
   );
