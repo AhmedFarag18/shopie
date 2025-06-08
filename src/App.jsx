@@ -10,13 +10,14 @@ function App() {
       <Toaster />
       <BrowserRouter>
         <MainLayout>
-          <Routes>
-            {routes.map((route, i) => (
-              <Route key={i} path={route.path} element={route.element} />
-            ))}
-          </Routes>
+            <Routes>
+              {routes.map((route, i) => (
+                <Route key={i} path={route.path} element={route.element} />
+              ))}
+            </Routes>
         </MainLayout>
       </BrowserRouter>
+
     </>
   );
 }
