@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 
-:root {
+@theme {
   /* ----------- Colors Variables -----------*/
   --color-primary: #6c7fd8;
   --color-secondary: rgb(99, 102, 241);
@@ -17,6 +17,6 @@
   --color-text-secondary: rgb(100, 116, 139);
 
   /*----------- Font Family Variables -----------*/
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Poppins", sans-serif;
   --font-heading: "Poppins", sans-serif;
 }
