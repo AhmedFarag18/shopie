@@ -23,11 +23,7 @@ export default function Navbar() {
             <option>Drinks</option>
             <option>Bakery</option>
           </select>
-          <input
-            type="text"
-            placeholder="Search products..."
-            className="px-2 py-1 w-full outline-none text-sm bg-transparent"
-          />
+          <input type="text" placeholder="Search products..." className="px-2 py-1 w-full outline-none text-sm bg-transparent"/>
           <FiSearch className="text-gray-500 text-2xl" />
         </div>
 

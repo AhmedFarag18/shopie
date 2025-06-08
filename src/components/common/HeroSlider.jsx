@@ -37,7 +37,7 @@ export default function HeroSlider() {
             </React.Fragment>
           ))}
         </h1>
-        <button className="px-4 py-2 border border-gray-400 rounded hover:bg-purple-600 text-sm text-gray-800 hover:text-white transition-colors duration-300">
+        <button className="px-4 py-2 border border-gray-400 rounded hover:bg-[rgb(99,102,241)] text-sm text-gray-800 hover:text-white transition-colors duration-300">
           Shop Now
         </button>
       </div>
