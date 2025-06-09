@@ -5,7 +5,6 @@ import MainLayout from "./components/layout/MainLayout";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function App() {
 
    const notifyError = () => {
@@ -23,17 +22,18 @@ function App() {
       <Toaster />
       <BrowserRouter>
         <MainLayout>
-          <Routes>
-            {routes.map((route, i) => (
-              <Route key={i} path={route.path} element={route.element} />
-            ))}
-          </Routes>
+            <Routes>
+              {routes.map((route, i) => (
+                <Route key={i} path={route.path} element={route.element} />
+              ))}
+            </Routes>
         </MainLayout>
       </BrowserRouter>
-      {/* Toast container لازم يتحط مره واحدة بس */}
+
       <ToastContainer position="top-right" autoClose={5000} />
     </>
   );
 }
 
 export default App;
+

@@ -17,6 +17,6 @@
   --color-text-secondary: rgb(100, 116, 139);
 
   /*----------- Font Family Variables -----------*/
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Poppins", sans-serif;
   --font-heading: "Poppins", sans-serif;
 }

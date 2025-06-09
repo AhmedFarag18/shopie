@@ -1,8 +1,3 @@
-
-
-
-
-
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
@@ -60,10 +55,8 @@ const SignUp = () => {
 
    return (
 <div className="min-h-screen flex items-center justify-center bg-gray-100">
-  {/* الحاوية الرئيسية flex row فيها الفورم والصورة */}
+  
   <div className="animate-slideInUp flex flex-row w-full max-w-4xl bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
-    
-    {/* الفورم */}
     <div className="w-1/2 p-8 bg-white">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
@@ -149,7 +142,7 @@ const SignUp = () => {
       </div>
     </div>
 
-    {/* صورة البانر */}
+    
     <div className="w-1/2 flex items-center justify-center bg-white">
       <img
         src={heroImage2}
