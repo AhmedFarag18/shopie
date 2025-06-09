@@ -3,3 +3,38 @@
  * Examples
  * GetProductsData or GetproductById and more if founded
  */
+
+import axios from "axios"
+
+const API_BASE_URL = "https://api.escuelajs.co/api/v1"
+
+const api = axios.create({
+  baseURL: API_BASE_URL,
+})
+
+// Auth APIs
+export const loginUser = (email, password) => {
+  return api.post("/auth/login", { email, password })
+}
+
+export const registerUser = (name, email, password) => {
+  return api.post("/users/", {
+    name,
+    email,
+    password,
+    avatar: "https://picsum.photos/800",
+  })
+}
+
+// Products APIs
+export const getProducts = () => {
+  return api.get("/products")
+}
+
+export const getProduct = (id) => {
+  return api.get(`/products/${id}`)
+}
+
+export const getCategories = () => {
+  return api.get("/categories")
+}
