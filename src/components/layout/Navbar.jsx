@@ -11,7 +11,11 @@ export default function Navbar() {
     <div className="bg-[#f8f8fb] font-sans">
       <header className="flex justify-between items-center px-4 md:px-6 py-4 shadow-sm bg-white">
         <div className="flex items-center space-x-2">
-          <img src="src/assets/Blueberry - eCommerce/logo.png" alt="Blue Berry Logo" className="h-10" />
+          <img
+            src="src/assets/Blueberry - eCommerce/logo.png"
+            alt="Blue Berry Logo"
+            className="h-10"
+          />
         </div>
 
         <div className="hidden md:flex items-center border border-gray-300 rounded-md px-3 w-full max-w-md">
@@ -44,7 +48,6 @@ export default function Navbar() {
           className="md:hidden text-2xl text-[#6c7fd8]"
         >
           <CiGrid41 className="text-2xl" />
-
         </button>
       </header>
 
@@ -68,11 +71,17 @@ export default function Navbar() {
             </div>
             <nav className="flex flex-col space-y-4 text-gray-700 text-sm">
               <span className="cursor-pointer hover:text-[#6c7fd8]">Home</span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">Categories</span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">Products</span>
+              <span className="cursor-pointer hover:text-[#6c7fd8]">
+                Categories
+              </span>
+              <span className="cursor-pointer hover:text-[#6c7fd8]">
+                Products
+              </span>
               <span className="cursor-pointer hover:text-[#6c7fd8]">Pages</span>
               <span className="cursor-pointer hover:text-[#6c7fd8]">Blog</span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">Offers</span>
+              <span className="cursor-pointer hover:text-[#6c7fd8]">
+                Offers
+              </span>
 
               <hr />
 
