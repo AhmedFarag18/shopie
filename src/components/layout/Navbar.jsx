@@ -3,20 +3,24 @@ import { FiSearch, FiUser } from "react-icons/fi";
 import { LuShoppingCart } from "react-icons/lu";
 import { CiGrid41 } from "react-icons/ci";
 import { BsHeart } from "react-icons/bs";
-
+import logo from "../../assets/Blueberry - eCommerce/logo.png"
+import { Link } from "react-router";
+import { useAuth } from "../../contexts/AuthContext";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { user, isAuthenticated, logout } = useAuth()
 
   return (
-    <div className="bg-[#f8f8fb] font-sans">
+    <div className="bg-light font-sans">
       <header className="flex justify-between items-center px-4 md:px-6 py-4 shadow-sm bg-white">
-        <div className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2">
           <img
-            src="src/assets/Blueberry - eCommerce/logo.png"
+            src={logo}
             alt="Blue Berry Logo"
             className="h-10"
           />
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center border border-gray-300 rounded-md px-3 w-full max-w-md">
           <select className="bg-transparent px-1 py-3 text-sm outline-none text-gray-600">
@@ -27,20 +31,53 @@ export default function Navbar() {
             <option>Drinks</option>
             <option>Bakery</option>
           </select>
-          <input type="text" placeholder="Search products..." className="px-2 py-1 w-full outline-none text-sm bg-transparent"/>
+          <input type="text" placeholder="Search products..." className="px-2 py-1 w-full outline-none text-sm bg-transparent" />
           <FiSearch className="text-gray-500 text-2xl" />
         </div>
 
         <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700">
-          <div className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
-            <FiUser className="text-xl" /> <span>Login</span>
-          </div>
-          <div className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
-            <BsHeart className="text-xl" /> <span>Wish List</span>
-          </div>
-          <div className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
+          <Link to="/cart" className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
             <LuShoppingCart className="text-xl" /> <span>Cart</span>
-          </div>
+          </Link>
+
+          {
+            isAuthenticated ?
+              (
+                <div className="relative">
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex items-center space-x-2 focus:outline-none"
+                  >
+                    <img
+                      src={user.avatar}
+                      alt="User Avatar"
+                      className="w-10 h-10 rounded-full border-2 border-b-gray"
+                    />
+                  </button>
+
+                  {/* Dropdown */}
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-auto p-2 bg-white border border-b-gray rounded z-50">
+                      <div className="p-2 text-sm text-gray-800 border-b border-b-gray">
+                        {user.name || "User"}
+                      </div>
+                      <div className="p-2 text-sm text-gray-800 border-b border-b-gray">
+                        {(user?.email.lenght > 15 ? user?.email.slice(0, 15) : user?.email) || "User Email"}
+                      </div>
+                      <button
+                        onClick={logout}
+                        className="w-full p-2 text-left text-red-500 hover:bg-red-500 hover:text-white text-sm rounded-sm"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )
+              : <Link to="/login" className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
+                <FiUser className="text-xl" /> <span>Login</span>
+              </Link>
+          }
         </div>
 
         <button
@@ -51,17 +88,14 @@ export default function Navbar() {
         </button>
       </header>
 
-      <nav className="hidden md:flex items-center space-x-6 px-6 py-2 text-sm text-gray-600 border-b border-b-gray-200 bg-white pb-4">
-        <span className="cursor-pointer hover:text-[#6c7fd8]">Home</span>
-        <span className="cursor-pointer hover:text-[#6c7fd8]">Categories</span>
-        <span className="cursor-pointer hover:text-[#6c7fd8]">Products</span>
-        <span className="cursor-pointer hover:text-[#6c7fd8]">Pages</span>
-        <span className="cursor-pointer hover:text-[#6c7fd8]">Blog</span>
-        <span className="cursor-pointer hover:text-[#6c7fd8]">Offers</span>
+      <nav className="hidden md:flex items-center space-x-6 px-6 py-2 text-sm text-gray-600 border-b border-b-main bg-white pb-4">
+        <Link to="/" className="cursor-pointer hover:text-[#6c7fd8]">Home</Link>
+        <Link to="categories" className="cursor-pointer hover:text-[#6c7fd8]">Categories</Link>
+        <Link to="products" className="cursor-pointer hover:text-[#6c7fd8]">Products</Link>
       </nav>
 
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-30">
+        <div className="fixed inset-0 z-50 h-full w-full bg-white-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-40 border border-gray-100">
           <div className="w-64 bg-white h-full p-4 shadow-md">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-lg font-semibold">Menu</h2>
@@ -70,30 +104,54 @@ export default function Navbar() {
               </button>
             </div>
             <nav className="flex flex-col space-y-4 text-gray-700 text-sm">
-              <span className="cursor-pointer hover:text-[#6c7fd8]">Home</span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">
-                Categories
-              </span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">
-                Products
-              </span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">Pages</span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">Blog</span>
-              <span className="cursor-pointer hover:text-[#6c7fd8]">
-                Offers
-              </span>
+              <Link to="/" className="cursor-pointer hover:text-[#6c7fd8]">Home</Link>
+              <Link to="categories" className="cursor-pointer hover:text-[#6c7fd8]">Categories</Link>
+              <Link to="products" className="cursor-pointer hover:text-[#6c7fd8]">Products</Link>
 
               <hr />
 
-              <div className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
-                <FiUser className="text-xl" /> <span>Login</span>
-              </div>
-              <div className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
-                <BsHeart className="text-xl" /> <span>Wish List</span>
-              </div>
-              <div className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
+              <Link to="/cart" className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
                 <LuShoppingCart className="text-xl" /> <span>Cart</span>
-              </div>
+              </Link>
+
+              {
+                isAuthenticated ?
+                  (
+                    <div className="relative">
+                      <button
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className="flex items-center space-x-2 focus:outline-none"
+                      >
+                        <img
+                          src={user.avatar}
+                          alt="User Avatar"
+                          className="w-10 h-10 rounded-full border-2 border-b-gray"
+                        />
+                      </button>
+
+                      {/* Dropdown */}
+                      {isDropdownOpen && (
+                        <div className="absolute right-0 mt-2 w-auto p-2 bg-white border border-b-gray rounded z-50">
+                          <div className="p-2 text-sm text-gray-800 border-b border-b-gray">
+                            {user.name || "User"}
+                          </div>
+                          <div className="p-2 text-sm text-gray-800 border-b border-b-gray">
+                            {(user?.email.lenght > 15 ? user?.email.slice(0, 15) : user?.email) || "User Email"}
+                          </div>
+                          <button
+                            onClick={logout}
+                            className="w-full p-2 text-left text-red-500 hover:bg-red-500 hover:text-white text-sm rounded-sm"
+                          >
+                            Logout
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )
+                  : <Link to="/login" className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
+                    <FiUser className="text-xl" /> <span>Login</span>
+                  </Link>
+              }
             </nav>
           </div>
         </div>

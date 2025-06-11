@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router';
-import axios from 'axios';
 import { BsCart } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa';
-import ProductDetailsSkeleton from './ProductDetailsSkeleton';
+import ProductDetailsSkeleton from '../../components/common/skeletons/ProductDetailsSkeleton';
+import { useProduct } from '../../hooks/useProduct';
+import RelatedProducts from './RelatedProducts';
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const { product, loading, error } = useProduct(id);
+  const [qty, setQty] = useState(1);
   const navigate = useNavigate();
 
-  const [product, setProduct] = useState(null);
-  const [qty, setQty] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const res = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`);
-        setProduct(res.data);
-      } catch (err) {
-        setError('Failed to load product', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [id]);
 
   const addToCart = () => {
     const productWithQty = { ...product, quantity: parseInt(qty) };
@@ -62,7 +46,7 @@ const ProductDetails = () => {
 
             <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded w-max">
               <FaStar className="text-yellow-400" />
-              <span>{(Math.random() * 2 + 3).toFixed(1)}</span>
+              <span>4.1</span>
             </div>
 
             <p className="text-gray-600">{product.description}</p>
@@ -94,6 +78,9 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
+
+        <RelatedProducts productId={id} />
+
       </div>
     </div>
   );

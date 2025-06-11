@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
-import { loginUser, registerUser } from "../services/api"
+import { getUserProfile, loginUser, registerUser } from "../services/api"
 
 const AuthContext = createContext()
 
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    
+
     const storedToken = localStorage.getItem("token")
     const storedUser = localStorage.getItem("user")
 
@@ -29,11 +29,14 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const login = async (email, password) => {
-   
+
 
     try {
-      const response = await loginUser(email, password)
-      const { access_token, user: userData } = response.data
+      const response = await loginUser(email, password);
+      const { access_token } = response.data;
+
+      const userResponse = await getUserProfile(access_token);
+      const userData = userResponse.data;
 
       setToken(access_token)
       setUser(userData)

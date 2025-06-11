@@ -58,7 +58,7 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="animate-slideInUp flex flex-row-reverse w-full max-w-4xl bg-white rounded-lg shadow-md overflow-hidden">
-       
+
         <div className="w-1/2 p-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
@@ -120,10 +120,10 @@ const Login = () => {
           </div>
         </div>
 
-       
+
         <div className="w-1/2 flex items-center justify-center bg-white">
           <img src={heroImage}
-          alt="Login Illustration" className="w-full h-full object-contain" />
+            alt="Login Illustration" className="w-full h-full object-contain" />
         </div>
       </div>
     </div>
