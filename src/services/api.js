@@ -26,15 +26,26 @@ export const registerUser = (name, email, password) => {
   })
 }
 
+export const getUserProfile = (token) => {
+  return api.get("/auth/profile", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 // Products APIs
 export const getProducts = () => {
   return api.get("/products")
 }
 
-export const getProduct = (id) => {
+export async function getProductById(id) {
   return api.get(`/products/${id}`)
 }
 
 export const getCategories = () => {
   return api.get("/categories")
+}
+export const getProductRelated = (id) => {
+  return api.get(`/products/${id}/related`)
 }

@@ -38,14 +38,14 @@ export default function DealOfTheDay() {
       extra: "100 ml"
     },
 
-     {
+    {
       image: "src/assets/Blueberry - eCommerce/back-5.jpg",
       category: "chips",
       title: "Mixed Fruits Chips",
       price: "$25",
       extra: "250g"
     },
-     {
+    {
       image: "src/assets/Blueberry - eCommerce/back-6.jpg",
       category: "snacks",
       title: "Mixed Nuts Snacks",
@@ -56,8 +56,8 @@ export default function DealOfTheDay() {
   ];
 
   return (
-    <section className="bg-white px-10 py-16">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-white py-16">
+      <div className="container m-auto p-3">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div>
             <h2 className="text-2xl font-bold text-gray-800">Day Of The Deal</h2>
@@ -84,37 +84,37 @@ export default function DealOfTheDay() {
           ))}
         </Swiper>
 
-    <div className="flex flex-col md:flex-row justify-center items-center gap-20 p-15 bg-white">
-      <div className="bg-[#fef0d7] relative w-full md:w-[450px] h-[300px] rounded-2xl overflow-hidden flex items-center justify-between p-6">
-        <div className="absolute top-0 right-0 w-full h-full bg-[#fcd9a3] rotate-[-30deg] origin-top-right -translate-y-[60%] -translate-x-[10%]"></div>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-5 p-4 mt-10 bg-white">
+          <div className="bg-[#fef0d7] relative w-full md:w-1/2  h-[300px] rounded-2xl overflow-hidden flex items-center justify-between p-6">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#fcd9a3] rotate-[-30deg] origin-top-right -translate-y-[60%] -translate-x-[10%]"></div>
 
-        <div className="relative z-10 w-1/2 flex justify-center">
-          <img src="src/assets/Blueberry - eCommerce/one.png" alt="Snacks" className="w-70 h-auto" />
+            <div className="relative z-10 w-1/2 flex justify-center">
+              <img src="src/assets/Blueberry - eCommerce/one.png" alt="Snacks" className="w-70 h-auto" />
+            </div>
+
+            <div className="relative z-10 w-1/2 space-y-3">
+              <h2 className="text-lg font-semibold text-gray-800">Tasty Snack & Fast food</h2>
+              <p className="text-sm text-gray-500">The flavour of something special</p>
+              <button className="text-sm px-4 py-2 border border-gray-400 rounded hover:bg-gray-100">Shop Now</button>
+            </div>
+          </div>
+
+          <div className="bg-[#ffdbe3] relative w-full md:w-1/2  h-[300px] rounded-2xl overflow-hidden flex items-center justify-between p-6">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#ffbfcf] rotate-[-30deg] origin-top-right -translate-y-[60%] -translate-x-[10%]"></div>
+
+            <div className="relative z-10 w-1/2 flex justify-center">
+              <img src="src/assets/Blueberry - eCommerce/two.png" alt="Fruits" className="w-70 h-auto" />
+            </div>
+
+            <div className="relative z-10 w-1/2 space-y-3">
+              <h2 className="text-lg font-semibold text-gray-800">Fresh Fruits & Vegetables</h2>
+              <p className="text-sm text-gray-500">A healthy meal for every one</p>
+              <button className="text-sm px-4 py-2 border border-gray-400 rounded hover:bg-gray-100">Shop Now</button>
+            </div>
+          </div>
         </div>
 
-        <div className="relative z-10 w-1/2 space-y-3">
-          <h2 className="text-lg font-semibold text-gray-800">Tasty Snack & Fast food</h2>
-          <p className="text-sm text-gray-500">The flavour of something special</p>
-          <button className="text-sm px-4 py-2 border border-gray-400 rounded hover:bg-gray-100">Shop Now</button>
-        </div>
       </div>
-
-      <div className="bg-[#ffdbe3] relative w-full md:w-[450px] h-[300px] rounded-2xl overflow-hidden flex items-center justify-between p-6">
-        <div className="absolute top-0 right-0 w-full h-full bg-[#ffbfcf] rotate-[-30deg] origin-top-right -translate-y-[60%] -translate-x-[10%]"></div>
-
-        <div className="relative z-10 w-1/2 flex justify-center">
-          <img src="src/assets/Blueberry - eCommerce/two.png" alt="Fruits" className="w-70 h-auto" /> 
-        </div>
-
-        <div className="relative z-10 w-1/2 space-y-3">
-          <h2 className="text-lg font-semibold text-gray-800">Fresh Fruits & Vegetables</h2>
-          <p className="text-sm text-gray-500">A healthy meal for every one</p>
-          <button className="text-sm px-4 py-2 border border-gray-400 rounded hover:bg-gray-100">Shop Now</button>
-        </div>
-      </div>
-    </div>
-
-        </div>
     </section>
   );
 }

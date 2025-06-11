@@ -1,56 +1,46 @@
 // pages/ProductsPage.jsx
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate, useSearchParams } from "react-router";
 import { FaArrowUp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductCard from "./ProductCard";
+import { toast } from "react-toastify";
+import ProductsSkeleton from "../../components/common/skeletons/ProductsSkeleton";
+import { useScrollToTop } from "../../hooks/useScrollToTop";
+import { useSearchFilter } from "../../hooks/useSearchFilter";
+import { getProducts } from "../../services/api";
 
 const ProductsPage = () => {
-  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const [filters, setFilters] = useState({ category: "", price: 1000 });
-  const [search, setSearch] = useState("");
-  const [showScroll, setShowScroll] = useState(false);
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
   const PRODUCTS_PER_PAGE = 6;
 
-  useEffect(() => {
-    const category = searchParams.get("category") || "";
-    const price = parseInt(searchParams.get("price")) || 1000;
-    const searchQuery = searchParams.get("search") || "";
-    const currentPage = parseInt(searchParams.get("page")) || 1;
-
-    setFilters({ category, price });
-    setSearch(searchQuery);
-    setPage(currentPage);
-  }, [searchParams]);
+  const { showScroll, scrollToTop } = useScrollToTop();
+  const {
+    filters,
+    search,
+    page,
+    setFilters,
+    setSearch,
+    setPage,
+    searchParams,
+    setSearchParams,
+  } = useSearchFilter();
 
   useEffect(() => {
     fetchProducts();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleScroll = () => {
-    setShowScroll(window.scrollY > 300);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("https://api.escuelajs.co/api/v1/products");
-      setProducts(res.data);
+      getProducts().then(res => {
+        setProducts(res.data);
+        setLoading(false);
+      })
     } catch (err) {
       console.error("Failed to fetch products:", err);
     }
-    setLoading(false);
   };
 
   const handleFilterChange = (e) => {
@@ -107,18 +97,18 @@ const ProductsPage = () => {
           placeholder="Search products..."
           value={search}
           onChange={handleSearchChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm"
         />
       </div>
 
-      <div className="flex gap-6 px-6 py-12 max-w-7xl mx-auto">
+      <div className="flex gap-6 px-6 py-12 max-w-7xl mx-auto max-md:flex-col">
         <aside className="w-64 space-y-6">
           <div>
             <h3 className="font-semibold mb-2">Category</h3>
             <select
               name="category"
               onChange={handleFilterChange}
-              className="w-full border px-2 py-1 rounded"
+              className="w-full border px-2 py-1 rounded-lg border-b-gray h-12"
               value={filters.category}
             >
               <option value="">All</option>
@@ -157,20 +147,7 @@ const ProductsPage = () => {
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, idx) => (
-                <div
-                  key={idx}
-                  className="bg-gray-100 animate-pulse p-4 rounded-xl"
-                >
-                  <div className="bg-gray-300 h-48 rounded mb-4"></div>
-                  <div className="h-4 bg-gray-300 mb-2 rounded w-3/4"></div>
-                  <div className="h-3 bg-gray-200 mb-1 rounded w-full"></div>
-                  <div className="h-3 bg-gray-200 mb-1 rounded w-5/6"></div>
-                  <div className="h-4 bg-gray-300 mt-4 rounded w-1/2"></div>
-                </div>
-              ))}
-            </div>
+            <ProductsSkeleton length={6} />
           ) : (
             <AnimatePresence mode="wait">
               <motion.div
@@ -179,7 +156,7 @@ const ProductsPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {paginatedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
@@ -196,11 +173,10 @@ const ProductsPage = () => {
                   setPage(i + 1);
                   setSearchParams({ ...filters, search, page: i + 1 });
                 }}
-                className={`px-3 py-1 rounded border ${
-                  page === i + 1
-                    ? "bg-[#6D6ADB] text-white"
-                    : "bg-white text-gray-700"
-                }`}
+                className={`px-3 py-1 rounded border ${page === i + 1
+                  ? "bg-[#6D6ADB] text-white"
+                  : "bg-white text-gray-700"
+                  }`}
               >
                 {i + 1}
               </button>
