@@ -10,7 +10,14 @@ import "./Login.css"
 import heroImage from '../../assets/hero-3.png'
 
 const loginSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
+    email: z.
+  string()
+  .min(6, "Email is too short")
+  .max(50, "Email is too long")
+  .email("Please enter a valid email address")
+  .refine((email) => email.endsWith("@gmail.com"), {
+  message: "Only Gmail accounts are allowed",
+}),
   password: z
     .string()
     .min(6, "Password must be at least 6 characters")
