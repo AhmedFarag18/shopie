@@ -9,9 +9,31 @@ import { hero2 } from "../../assets/images"
 
 
 const signUpSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+ name: z
+    .string()
+    .min(4, "Name must be at least 4 characters")
+    .refine((val) => /^[A-Za-z\s]+$/.test(val), {
+      message: "Name must contain only letters and spaces",
+    })
+    .refine((val) => val.trim().split(" ").length >= 2, {
+      message: "Name must contain at least two words",
+    }),
+
+  email: z.
+  string()
+  .min(6, "Email is too short")
+  .max(50, "Email is too long")
+  .email("Please enter a valid email address")
+  .refine((email) => email.endsWith("@gmail.com"), {
+  message: "Only Gmail accounts are allowed",
+}),
+
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .refine((val) => /[a-zA-Z]/.test(val) && /\d/.test(val), {
+      message: "Password must contain both letters and numbers",
+    }),
 })
 
 const SignUp = () => {
