@@ -1,5 +1,8 @@
-export default function Summary({ cartItems }) {
+import { Link } from "react-router";
+import { useCart } from "../../contexts/CartContext";
 
+export default function Summary({ cartItems }) {
+  const { clearCart } = useCart()
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -42,12 +45,13 @@ export default function Summary({ cartItems }) {
 
       <div className="mt-6 text-center animate-fade-in">
         {!(total == 0) && (
-          <div
-            to="/"
+          <Link
+            to="/checkout"
             className="btn-primary w-full"
+            onClick={() => clearCart()}
           >
             CheckOut
-          </div>
+          </Link>
         )}
       </div>
     </div>

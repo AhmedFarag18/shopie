@@ -1,3 +1,4 @@
+import ScrollToTop from "../common/scrollToTop"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
 function MainLayout({ children }) {
@@ -8,7 +9,7 @@ function MainLayout({ children }) {
       <main>
         {children}
       </main>
-
+      <ScrollToTop />
       <Footer />
     </div>
   )

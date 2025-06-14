@@ -7,14 +7,20 @@ import ProductDetails from "../pages/productDetails/ProductDetails";
 import ProductsPage from "../pages/products/ProductsPage";
 import Cart from "../pages/cart/Cart";
 import { ProtectedRoute } from "../guard/ProtectedRoute";
+import Categories from "../pages/categories/Categories";
+import CategoryProducts from "../pages/categories/CategoryProducts";
+import Checkout from "../pages/Checkout";
 
 export const routes = [
   { path: '/', element: <Home /> },
   { path: '/login', element: <Login /> },
   { path: '/SignUp', element: <SignUp /> },
-  { path: '/about', element: <h2>About</h2> },
+  { path: '/about', element: <AboutUs /> },
   { path: '/products', element: <ProductsPage /> },
   { path: '/products/:id', element: <ProductDetails /> },
+  { path: '/categories', element: <Categories /> },
+  { path: '/category/:categoryId', element: <CategoryProducts /> },
+  { path: '/checkout', element: <Checkout /> },
   // protected Route
   { path: '/cart', element: (<ProtectedRoute><Cart /></ProtectedRoute>) },
   // make Not Found Last

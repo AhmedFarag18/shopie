@@ -18,7 +18,7 @@ export const CartProvider = ({ children, userEmail }) => {
     setCartItems(newCart);
   };
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantity = 1) => {
     const minimalProduct = {
       id: product.id,
       title: product.title,
@@ -30,12 +30,12 @@ export const CartProvider = ({ children, userEmail }) => {
     let updatedCart;
 
     if (!found) {
-      updatedCart = [...cartItems, { ...minimalProduct, quantity: 1 }];
+      updatedCart = [...cartItems, { ...minimalProduct, quantity }];
       toast.success("Product added to cart");
     } else {
       updatedCart = cartItems.map((item) =>
         item.id === minimalProduct.id
-          ? { ...item, quantity: item.quantity + 1 }
+          ? { ...item, quantity: item.quantity + quantity }
           : item
       );
       toast.success("Product quantity Increase");

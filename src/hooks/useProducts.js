@@ -1,29 +1,28 @@
 // hooks/useProduct.js
 
 import { useEffect, useState } from "react";
-import { getProductById } from "../services/api";
+import { getProducts } from "../services/api";
 
-export function useProduct(id) {
-  const [product, setProduct] = useState(null);
+export function useProducts() {
+  const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!id) return;
 
     setLoading(true);
     setError("");
 
-    getProductById(id)
+    getProducts()
       .then((data) => {
-        setProduct(data.data);
+        setProducts(data.data);
         setLoading(false);
       })
       .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
-  }, [id]);
+  }, []);
 
-  return { product, loading, error };
+  return { products, loading, error };
 }
