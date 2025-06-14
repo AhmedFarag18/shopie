@@ -20,7 +20,6 @@
 
   /*----------- Font Family Variables -----------*/
   --font-sans: "Poppins", sans-serif;
-  --font-heading: "Poppins", sans-serif;
 }
 
 
@@ -66,4 +65,35 @@ option:active {
   .btn-primary:hover::before {
     transform: scale(1);
   }
+}
+
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 300px, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animate-slideInUp {
+  animation-name: slideInUp;
+  animation-duration: 1000ms;
+  animation-timing-function: ease;
+  animation-delay: 200ms;
+  animation-fill-mode: both;
+}
+
+
+.category_item_details {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("./assets/images/category/banner.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+  width: 100%;
 }

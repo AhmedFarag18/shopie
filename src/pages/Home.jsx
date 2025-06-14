@@ -1,6 +1,6 @@
-import ExploreCategories from "../components/common/ExploreCategories";
-import DealOfTheDay from "../components/common/DealOfTheDay";
-import HeroSlider from "../components/common/HeroSlider";
+import ExploreCategories from "../components/common/home/ExploreCategories";
+import DealOfTheDay from "../components/common/home/DealOfTheDay";
+import HeroSlider from "../components/common/home/HeroSlider";
 
 
 const Home = () => {
@@ -10,9 +10,6 @@ const Home = () => {
       <ExploreCategories />
       <DealOfTheDay />
 
-      {/* <div className="fixed right-0 bottom-10 rotate-90 w-20 h-20 text-xs bg-primary text-gray-400">
-        Go to top
-      </div> */}
     </div>
   );
 }

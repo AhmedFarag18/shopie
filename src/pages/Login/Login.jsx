@@ -6,8 +6,7 @@ import { z } from "zod"
 import { useAuth } from "../../contexts/AuthContext"
 import { Eye, EyeOff, Mail, Lock } from "lucide-react"
 import { toast } from "react-toastify"
-import "./Login.css"
-import heroImage from '../../assets/hero-3.png'
+import { hero3 } from "../../assets/images"
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -32,7 +31,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/products")
+      navigate("/")
     }
   }, [isAuthenticated, navigate])
 
@@ -45,7 +44,7 @@ const Login = () => {
         autoClose: 3000,
       })
       setTimeout(() => {
-        navigate("/products")
+        navigate("/")
       }, 1000)
     } else {
       toast.error(result.error || "Invalid email or password", {
@@ -122,7 +121,7 @@ const Login = () => {
 
 
         <div className="w-1/2 flex items-center justify-center bg-white">
-          <img src={heroImage}
+          <img src={hero3}
             alt="Login Illustration" className="w-full h-full object-contain" />
         </div>
       </div>

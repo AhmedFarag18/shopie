@@ -5,18 +5,18 @@ import { FaStar } from 'react-icons/fa';
 import ProductDetailsSkeleton from '../../components/common/skeletons/ProductDetailsSkeleton';
 import { useProduct } from '../../hooks/useProduct';
 import RelatedProducts from './RelatedProducts';
+import { useCart } from '../../contexts/CartContext';
+import toast from 'react-hot-toast';
+import { useAuth } from '../../contexts/AuthContext';
 
 const ProductDetails = () => {
   const { id } = useParams();
   const { product, loading, error } = useProduct(id);
   const [qty, setQty] = useState(1);
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const { addToCart } = useCart();
 
-
-  const addToCart = () => {
-    const productWithQty = { ...product, quantity: parseInt(qty) };
-    console.log('Product added to cart:', productWithQty);
-  };
 
   if (loading) return <ProductDetailsSkeleton />;
   if (error) return <p className="text-red-600 p-10">{error}</p>;
@@ -65,11 +65,16 @@ const ProductDetails = () => {
                 type="number"
                 min="1"
                 value={qty}
-                onChange={(e) => setQty(e.target.value)}
+                onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
                 className="p-2 w-20 border border-gray-300 rounded text-sm text-gray-700 outline-none"
               />
+
               <button
-                onClick={addToCart}
+                onClick={() => {
+                  if (!isAuthenticated) return toast.error("Please Sign in First");
+
+                  addToCart(product, Number(qty)); // ✅ send qty as number
+                }}
                 className="flex items-center gap-2 text-white bg-primary hover:bg-secondary  font-medium rounded-md text-sm px-5 py-2.5 cursor-pointer"
               >
                 <BsCart />

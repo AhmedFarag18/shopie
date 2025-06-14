@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../components/common/ProductCard";
 import { toast } from "react-toastify";
 import ProductsSkeleton from "../../components/common/skeletons/ProductsSkeleton";
 import { useScrollToTop } from "../../hooks/useScrollToTop";

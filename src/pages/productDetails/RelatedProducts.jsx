@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProductRelated } from "../../services/api";
-import ProductCard from "../products/ProductCard"
+import ProductCard from "../../components/common/ProductCard"
 import ProductsSkeleton from "../../components/common/skeletons/ProductsSkeleton";
 
 function RelatedProducts({ productId }) {

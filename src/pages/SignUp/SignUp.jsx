@@ -5,9 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useAuth } from "../../contexts/AuthContext"
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react"
-import "./SignUp.css"
-import heroImage2 from '../../assets/hero-2.png'
-
+import { hero2 } from "../../assets/images"
 
 
 const signUpSchema = z.object({
@@ -145,7 +143,7 @@ const SignUp = () => {
 
         <div className="w-1/2 flex items-center justify-center bg-white">
           <img
-            src={heroImage2}
+            src={hero2}
             alt="Login Illustration"
             className="w-full h-full object-contain"
           />

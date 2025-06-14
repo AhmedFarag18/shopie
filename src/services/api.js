@@ -46,6 +46,11 @@ export async function getProductById(id) {
 export const getCategories = () => {
   return api.get("/categories")
 }
+
+export const getCategoryProducts = (categoryId) => {
+  return api.get(`/categories/${categoryId}/products`);
+}
+
 export const getProductRelated = (id) => {
   return api.get(`/products/${id}/related`)
 }

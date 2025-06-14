@@ -1,48 +1,46 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaArrowUp } from "react-icons/fa";
-import {
-  MdLocalShipping,
-  MdSupportAgent,
-  MdAutorenew,
-  MdPayment,
-} from "react-icons/md";
-import farm from "../assets/farm.jpg";
-import aboutSection from "../assets/about-section.png";
+import { MdLocalShipping, MdSupportAgent, MdAutorenew, MdPayment, } from "react-icons/md";
+import { aboutSectionImg, farmImg } from "../assets/images";
 
-
+const features = [
+  {
+    title: "Free Shipping",
+    desc: "Free shipping on all US order or above $200",
+    icon: <MdLocalShipping className="text-4xl text-orange-500 mx-auto mb-4" />,
+  },
+  {
+    title: "24x7 Support",
+    desc: "Contact us 24 hours a day, 7 days a week",
+    icon: <MdSupportAgent className="text-4xl text-purple-500 mx-auto mb-4" />,
+  },
+  {
+    title: "30 Days Return",
+    desc: "Simply return it within 30 days for an exchange",
+    icon: <MdAutorenew className="text-4xl text-green-500 mx-auto mb-4" />,
+  },
+  {
+    title: "Payment Secure",
+    desc: "Secure online payment methods",
+    icon: <MdPayment className="text-4xl text-pink-500 mx-auto mb-4" />,
+  },
+]
 
 const AboutUs = () => {
-  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
-    const handleScroll = () => {
-      setShowScroll(window.scrollY > 300);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <div className="bg-white text-gray-800">
-      {showScroll && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
-        >
-          <FaArrowUp />
-        </button>
-      )}
-
       {/* Hero Section */}
       <div className="relative w-full h-[400px] overflow-hidden">
         <div
           className="absolute inset-0 bg-center bg-cover scale-105 filter blur-sm"
-          style={{ backgroundImage: `url(${farm})` }}
+          style={{ backgroundImage: `url(${farmImg})` }}
         ></div>
         <div className="relative z-10 flex items-center justify-center h-full text-white text-center px-4">
           <div className="backdrop-blur-md bg-black/60 p-4 md:p-8 rounded-xl max-w-2xl" data-aos="zoom-in">
@@ -59,7 +57,7 @@ const AboutUs = () => {
       {/* About Section */}
       <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 px-6 lg:px-20 py-10 bg-gray-100">
         <div className="lg:w-1/2" data-aos="fade-left">
-          <img src={aboutSection} alt="one.png" />
+          <img src={aboutSectionImg} alt="about image" />
         </div>
         <div className="lg:w-1/2" data-aos="fade-right">
           <h2 className="text-3xl font-bold mb-2">
@@ -102,31 +100,10 @@ const AboutUs = () => {
           Customer service should not be a department. It should be the entire company.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            {
-              title: "Free Shipping",
-              desc: "Free shipping on all US order or above $200",
-              icon: <MdLocalShipping className="text-4xl text-orange-500 mx-auto mb-4" />,
-            },
-            {
-              title: "24x7 Support",
-              desc: "Contact us 24 hours a day, 7 days a week",
-              icon: <MdSupportAgent className="text-4xl text-purple-500 mx-auto mb-4" />,
-            },
-            {
-              title: "30 Days Return",
-              desc: "Simply return it within 30 days for an exchange",
-              icon: <MdAutorenew className="text-4xl text-green-500 mx-auto mb-4" />,
-            },
-            {
-              title: "Payment Secure",
-              desc: "Secure online payment methods",
-              icon: <MdPayment className="text-4xl text-pink-500 mx-auto mb-4" />,
-            },
-          ].map((item, idx) => (
+          {features.map((item, idx) => (
             <div
               key={idx}
-              className="group bg-white rounded-2xl shadow border p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="group bg-white rounded-lg shadow border border-b-gray p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               data-aos="zoom-in"
               data-aos-duration="800"
               data-aos-delay={idx * 100}

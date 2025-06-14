@@ -2,38 +2,32 @@ import React, { useState } from "react";
 import { FiSearch, FiUser } from "react-icons/fi";
 import { LuShoppingCart } from "react-icons/lu";
 import { CiGrid41 } from "react-icons/ci";
-import { BsHeart } from "react-icons/bs";
-import logo from "../../assets/Blueberry - eCommerce/logo.png"
 import { Link } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import { mainIcon } from "../../assets/icons";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user, isAuthenticated, logout } = useAuth()
 
   return (
-    <div className="bg-light font-sans">
+    <div className="bg-light font-sans  border-b border-b-gray-50">
       <header className="flex justify-between items-center px-4 md:px-6 py-4 shadow-sm bg-white">
-        <Link to="/" className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center gap-1">
           <img
-            src={logo}
+            src={mainIcon}
             alt="Blue Berry Logo"
-            className="h-10"
+            className="h-8"
           />
+          <span className="text-xl text-fuchsia-900 font-bold uppercase mt-1">Shopie</span>
         </Link>
 
-        <div className="hidden md:flex items-center border border-gray-300 rounded-md px-3 w-full max-w-md">
-          <select className="bg-transparent px-1 py-3 text-sm outline-none text-gray-600">
-            <option>Vegetables</option>
-            <option>Fruits</option>
-            <option>Dairy</option>
-            <option>Snacks</option>
-            <option>Drinks</option>
-            <option>Bakery</option>
-          </select>
-          <input type="text" placeholder="Search products..." className="px-2 py-1 w-full outline-none text-sm bg-transparent" />
-          <FiSearch className="text-gray-500 text-2xl" />
-        </div>
+      <nav className="hidden md:flex items-center space-x-6 px-6 py-2 text-sm text-gray-600 bg-white">
+        <Link to="/" className="cursor-pointer transition hover:text-[#6c7fd8]">Home</Link>
+        <Link to="categories" className="cursor-pointer transition hover:text-[#6c7fd8]">Categories</Link>
+        <Link to="about" className="cursor-pointer transition hover:text-[#6c7fd8]">About</Link>
+        <Link to="products" className="cursor-pointer transition hover:text-[#6c7fd8]">Products</Link>
+      </nav>
 
         <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700">
           <Link to="/cart" className="flex items-center space-x-1 cursor-pointer hover:text-[#6c7fd8]">
@@ -88,11 +82,7 @@ export default function Navbar() {
         </button>
       </header>
 
-      <nav className="hidden md:flex items-center space-x-6 px-6 py-2 text-sm text-gray-600 border-b border-b-main bg-white pb-4">
-        <Link to="/" className="cursor-pointer hover:text-[#6c7fd8]">Home</Link>
-        <Link to="categories" className="cursor-pointer hover:text-[#6c7fd8]">Categories</Link>
-        <Link to="products" className="cursor-pointer hover:text-[#6c7fd8]">Products</Link>
-      </nav>
+
 
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 h-full w-full bg-white-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-40 border border-gray-100">
