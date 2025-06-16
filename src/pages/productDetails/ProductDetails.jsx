@@ -30,7 +30,7 @@ const ProductDetails = () => {
           Back
         </Link>
 
-        <div className="flex flex-col md:flex-row gap-8 pt-10">
+        <div className="animate-slideInUp flex flex-col md:flex-row gap-8 pt-10">
           {/* Product Image */}
           <div className="w-full md:w-1/2">
             <img

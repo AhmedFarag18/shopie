@@ -165,7 +165,7 @@ const ProductsPage = () => {
             </AnimatePresence>
           )}
 
-          <div className="flex justify-center mt-8 gap-2">
+          <div className="flex flex-wrap justify-center mt-8 gap-2">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}

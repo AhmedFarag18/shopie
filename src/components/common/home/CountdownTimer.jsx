@@ -18,16 +18,12 @@ export default function CountdownTimer() {
   }, []);
 
   return (
-    <div className="flex items-center gap-0 mt-4 md:mt-0">
-      <div className="text-2xl text-dark font-semibold max-md:text-sm bg-light px-4 py-2 rounded-lg">
-        {timeLeft.days} Days
-      </div>
+    <div className="flex items-center  gap-2 mt-4 md:mt-0 text-lg text-dark font-medium max-md:text-sm bg-light px-4 py-2 rounded-xl">
+      <span>{timeLeft.days} <span className="text-gray-500">Days</span></span>
       {['hours', 'minutes', 'seconds'].map((u) => (
         <React.Fragment key={u}>
-          <div className="text-2xl text-dark font-semibold max-md:text-sm mx-2">:</div>
-          <div className="text-2xl text-dark font-semibold max-md:text-sm bg-light px-4 py-2 rounded-lg">
-            {timeLeft[u].toString().padStart(2, '0')}
-          </div>
+          <span className="text-gray-500">:</span>
+          <span>{timeLeft[u].toString().padStart(2, '0') + u.slice(0, 1)}</span>
         </React.Fragment>
       ))}
     </div>
