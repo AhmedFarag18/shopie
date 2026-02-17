@@ -1,8 +1,6 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 @theme {
-  /* ----------- Colors Variables -----------*/
   --color-primary: #6c7fd8;
   --color-secondary: rgb(99, 102, 241);
   --color-accent: rgb(236, 72, 153);
@@ -18,10 +16,8 @@
   --color-text-primary: rgb(15, 23, 42);
   --color-text-secondary: rgb(100, 116, 139);
 
-  /*----------- Font Family Variables -----------*/
-  --font-sans: "Poppins", sans-serif;
+  --font-sans: 'Poppins', sans-serif;
 }
-
 
 input:focus,
 input:active,
@@ -31,22 +27,20 @@ textarea:focus,
 textarea:active,
 option:focus,
 option:active {
-  @apply outline outline-primary
+  @apply outline outline-primary;
 }
-
-
 
 @layer components {
   .btn-primary {
     @apply bg-primary text-sm shadow-[0px_0px_20px_0px_#00000017] flex gap-2 justify-center items-center w-fit px-4 py-3 rounded-lg text-white transition ease-in-out duration-300 relative overflow-hidden z-10 cursor-pointer;
   }
 
-  .btn-primary>* {
+  .btn-primary > * {
     z-index: 5;
   }
 
   .btn-primary::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 200%;
     height: 200%;
@@ -66,7 +60,6 @@ option:active {
     transform: scale(1, 1);
   }
 }
-
 
 @keyframes slideInUp {
   from {
@@ -88,9 +81,10 @@ option:active {
   animation-fill-mode: both;
 }
 
-
 .category_item_details {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("./assets/images/category/banner.jpg");
+  background-image:
+    linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('./assets/images/category/banner.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
