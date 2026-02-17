@@ -1,4 +1,4 @@
-import ScrollToTop from "../common/scrollToTop"
+import ScrollToTop from "../common/ScrollToTop"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
 function MainLayout({ children }) {
